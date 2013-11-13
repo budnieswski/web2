@@ -1,0 +1,41 @@
+<div id="consultar-pedido">
+
+  <div class="accordion ui-helper-reset ui-helper-clearfix">
+    <h3>Consultar pedido</h3>
+    <div>
+    	<form action="#" id="pesquisar">
+    		ID <input type="text" name="pesquisa_id" id="pesquisa_id">
+    		Cliente <input type="text" name="pesquisa_cliente" id="pesquisa_cliente">
+    		<input id="enviar" name="pesquisar" type="submit" value="Pesquisar" />
+    	</form>
+    </div>
+
+    <h3>Resultado Consulta</h3>
+    <div>
+	  <table class="styleTable table-lista-lavagem" >
+        <tr>
+          <th class="codigo">Código</th>
+          <th class="endereco">Endereço</th>
+          <th class="visualizar">Visualizar Itens</th>
+          <th class="data">Data Postagem</th>
+          <th class="data">Data Entrega</th>
+          <th class="cancelar">Cancelar Lavagem</th>
+        </tr>
+        <tr id="8">
+          <td>8</td>
+          <td><a href="#endereco"><span class="ui-icon ui-icon-home"></a></td>
+          <td><a href="#visualizar"><span class="ui-icon ui-icon-tag"></a></td>
+          <td>12/12/2013</td>
+          <td>12/12/2013</td>
+          <td><a href="#cancelar"><span class="ui-icon ui-icon-closethick"></span></a></td>
+        </tr>
+      </table>
+    </div>
+
+  <!-- e#accordion -->
+
+</div>
+<!-- e#consultar-lavagem -->
+
+<!-- Para buggar, pois o conteudo ajax e carregado depois de ter executado o script -->
+<script src="js/main.js"></script>

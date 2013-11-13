@@ -1,0 +1,42 @@
+<div id="cadastro-funcionario">
+
+  <div class="accordion ui-helper-reset ui-helper-clearfix">
+    <h3>Cadastro de Funcionário</h3>
+    <div>
+    	<form id="form-cadastro-funcionario" method="get" action="#">
+	      <input id="fcf_nome" name="nome" type="text" value="" placeholder="Nome" />
+	      <input id="fcf_email" name="email" type="text" value="" placeholder="E-mail" />
+	      <input class="data" id="fcf_data" name="data" type="text" value="" placeholder="Data Nascimento" />
+        <input id="fcf_senha" name="senha" type="password" value="" placeholder="Senha" />
+	      <input id="fcf_senha2" name="senha2" type="password" value="" placeholder="Repita a Senha" />
+	      <input id="fcf_enviar" name="enviar" type="submit" value="Cadastrar" />
+	    </form>
+    </div>
+
+    <h3>Editar</h3>
+    <div id="pesquisar-funcionario">
+    <form action="#" id="form-pesquisar-funcionario">
+      <input id="fpf_nome" name="nome" type="text" value="" placeholder="Nome" />
+      <input id="fpf_enviar" name="enviar" type="submit" value="Pesquisar" />
+    </form>
+    </div>
+
+    <h3 id="resultado-busca-funcionario">Resultado Busca</h3>
+    <div>
+      <form id="form-editar-funcionario" method="get" action="#">
+        <input id="fef_nome" name="nome" type="text" value="Henrique" placeholder="Nome" />
+        <input id="fef_email" name="email" type="text" value="henrique@gmail.com" placeholder="E-mail" />
+        <input class="data" id="fef_data" name="data" type="text" value="10/01/2013" placeholder="Data Nascimento" />
+        <input id="fef_senha" name="senha" type="password" value="" placeholder="Senha" />
+        <input id="fef_senha2" name="senha2" type="password" value="" placeholder="Repita a Senha" />
+        <input id="fef_enviar" name="enviar" type="submit" value="Alterar" />
+      </form>
+    </div>
+
+  <!-- e#accordion -->
+
+</div>
+<!-- e#cadastro-funcionario -->
+
+<!-- Para buggar, pois o conteudo ajax e carregado depois de ter executado o script -->
+<script src="js/main.js"></script>

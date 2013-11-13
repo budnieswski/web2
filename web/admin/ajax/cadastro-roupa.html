@@ -1,0 +1,57 @@
+<div id="cadastro-roupa">
+
+  <!-- Dialogs -->
+
+  <div id="dialog-cadastro-categoria" title="Nova Categoria">
+	<input id="ccatnome" name="nome" type="text" value="" placeholder="Nome" />
+  </div>
+
+  <!-- e#Dialogs -->
+
+  <div class="accordion ui-helper-reset ui-helper-clearfix">
+    <h3>Cadastro de Roupa</h3>
+    <div>
+	    <form id="form-cadastro-roupa" method="get" action="#">
+	      <input id="fcr_nome" name="nome" type="text" value="" placeholder="Nome" />
+	      <select id="fcr_categoria" name="categoria">
+	        <option value="">Categoria</option>
+	        <option value="Blusa">Blusa</option>
+	        <option value="Calca">Calça</option>
+	      </select>
+	      	<span id="btn-cadastro-categoria" style="float: right; position: absolute; top: 147px; left: 326px;" class="ui-icon ui-icon-plus"></span>
+	      <input id="fcr_preco" name="preco" type="text" value="" placeholder="Preço" />
+	      <input id="fcr_imagem" name="imagem" type="file" value="" placeholder="Imagem" />
+	      <input id="fcr_prazo" name="prazo" type="text" value="" placeholder="Prazo Entrega" />
+	      <input id="fcr_enviar" name="enviar" type="submit" value="Cadastrar" />
+	    </form>
+    </div>
+
+    <h3>Editar</h3>
+    <div id="pesquisar-roupa">
+		<form action="#" id="form-pesquisar-roupa">
+			<input id="fpr_nome" name="nome" type="text" value="" placeholder="Nome" />
+			<input id="fpr_enviar" name="enviar" type="submit" value="Pesquisar" />
+		</form>
+    </div>
+
+    <h3 id="resultado-pesquisar-roupa">Resultado Busca</h3>
+    <div>
+		  <form id="form-editar-roupa" method="get" action="#">
+        <input id="fer_nome" name="nome" type="text" value="Moletom Fino" placeholder="Nome" />
+        <select id="fer_categoria" name="categoria">
+          <option value="Blusa">Blusa</option>
+          <option value="Calca">Calça</option>
+        </select>
+        <input id="fer_preco" name="preco" type="text" value="1.50" placeholder="Preço" />
+        <input id="fer_imagem" name="imagem" type="file" value="" placeholder="Imagem" />
+        <input id="fer_prazo" name="prazo" type="text" value="5" placeholder="Prazo Entrega" />
+        <input id="fer_enviar" name="enviar" type="submit" value="Alterar" />
+      </form>
+    </div>
+
+  <!-- e#accordion -->
+</div>
+<!-- e#cadastro-roupa -->
+
+<!-- Para buggar, pois o conteudo ajax e carregado depois de ter executado o script -->
+<script src="js/main.js"></script>

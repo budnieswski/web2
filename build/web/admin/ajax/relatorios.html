@@ -1,0 +1,46 @@
+<div id="relatorios">
+
+  <div class="accordion ui-helper-reset ui-helper-clearfix">
+    <h3>Receitas</h3>
+    <div>
+    	<form method="get" action="#">
+        <input name="tipo" type="hidden" value="receitas" />
+        <input class="data" id="datai" name="datai" type="text" value="" placeholder="Data Inicial" />
+	      <input class="data" id="dataf" name="dataf" type="text" value="" placeholder="Data Final" />
+	      <input id="enviar" name="enviar" type="submit" value="Gerar Relatório" />
+	    </form>
+    </div>
+
+    <h3>Clientes</h3>
+    <div>
+      <form method="get" action="#">
+        <input name="tipo" type="hidden" value="clientes" />
+        <input id="enviar" name="enviar" type="submit" value="Gerar Relatório" />
+      </form>
+    </div>
+
+    <h3>Clientes Fiéis</h3>
+    <div>
+      <form method="get" action="#">
+        <input name="tipo" type="hidden" value="clientes_fieis" />
+        <input id="enviar" name="enviar" type="submit" value="Gerar Relatório" />
+      </form>
+    </div>
+
+    <h3>Pedidos</h3>
+    <div>
+      <form method="get" action="#">
+        <input name="tipo" type="hidden" value="pedidos" />
+        <input class="data" id="datai" name="datai" type="text" value="" placeholder="Data Inicial" />
+        <input class="data" id="dataf" name="dataf" type="text" value="" placeholder="Data Final" />
+        <input id="enviar" name="enviar" type="submit" value="Gerar Relatório" />
+      </form>
+    </div>
+
+  <!-- e#accordion -->
+
+</div>
+<!-- e#relatorios -->
+
+<!-- Para buggar, pois o conteudo ajax e carregado depois de ter executado o script -->
+<script src="js/main.js"></script>

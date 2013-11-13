@@ -1,0 +1,57 @@
+<div id="cancelar-lavagem">
+
+  <!-- Dialogs -->
+
+  <div id="dialog-itens-lavagem" title="Itens">
+    <ul class="itens ui-helper-reset"></ul>
+  </div>
+
+  <div id="dialog-cancelar-lavagem" title="Cancelar lavagem ?">
+    Tem certeza que deseja cancelar esta lavagem ?
+  </div>
+
+  <!-- e#Dialogs -->
+
+  <div class="accordion ui-helper-reset ui-helper-clearfix">
+    <h3>Lavagens Pendentes</h3>
+    <div id="lavagens-pendentes">
+      <table class="styleTable table-lista-lavagem" >
+        <tr>
+          <th class="codigo">Código</th>
+          <th class="status">Status</th>
+          <th class="visualizar">Visualizar Itens</th>
+          <th class="data">Data Postagem</th>
+          <th class="data">Data Entrega</th>
+          <th class="valor">Valor</th>
+          <th class="cancelar">Cancelar Lavagem</th>
+        </tr>
+        <tr id="8">
+          <td>8</td>
+          <td>Lavando</td>
+          <td><a href="#visualizar"><span class="ui-icon ui-icon-tag"></a></td>
+          <td>12/12/2013</td>
+          <td>12/12/2013</td>
+          <td>R$ 15.75</td>
+          <td><a href="#cancelar"><span class="ui-icon ui-icon-closethick"></span></a></td>
+        </tr>
+        <tr id="5">
+          <td>5</td>
+          <td>Coleta</td>
+          <td><a href="#visualizar"><span class="ui-icon ui-icon-tag"></a></td>
+          <td>12/12/2013</td>
+          <td>12/12/2013</td>
+          <td>R$ 15.75</td>
+          <td><a href="#cancelar"><span class="ui-icon ui-icon-closethick"></span></a></td>
+        </tr>
+      </table>
+    </div>
+    <!-- e#Lavagem Pendentes -->
+    
+  </div>
+  <!-- e#accordion -->
+
+</div>
+<!-- e#cancelar-lavagem -->
+
+<!-- Para buggar, pois o conteudo ajax e carregado depois de ter executado o script -->
+<script src="js/main.js"></script>

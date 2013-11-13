@@ -1,0 +1,54 @@
+<div id="cadastro-cliente">
+
+  <div class="accordion ui-helper-reset ui-helper-clearfix">
+    <h3>Cadastro de Cliente</h3>
+    <div>
+    	<form id="form-cadastro-cliente" method="get" action="#">
+	      <input id="fcc_nome" name="nome" type="text" value="" placeholder="Nome" />
+	      <input id="fcc_endereco" name="endereco" type="text" value="" placeholder="Endereço" />
+	      <select id="fcc_sexo" name="sexo">
+	        <option value="">Sexo</option>
+	        <option value="Masculino">Masculino</option>
+	        <option value="Feminino">Feminino</option>
+	      </select>
+	      <input id="fcc_telefone" name="telefone" type="text" value="" placeholder="Telefone" />
+	      <input id="fcc_cpf" name="cpf" type="text" value="" placeholder="CPF" />
+	      <input id="fcc_email" name="email" type="text" value="" placeholder="E-mail" />
+	      <input id="fcc_senha" name="senha" type="password" value="" placeholder="Senha" />
+	      <input id="fcc_senha2" name="senha2" type="password" value="" placeholder="Repita a senha" />
+	      <input id="fcc_enviar" name="enviar" type="submit" value="Cadastrar" />
+	    </form>
+    </div>
+
+    <h3>Editar</h3>
+    <div id="pesquisar-cliente">
+		<form action="#" id="form-pesquisar-cliente">
+			<input id="fpc_nome" name="nome" type="text" value="" placeholder="Nome" />
+			<input id="fpc_enviar" name="enviar" type="submit" value="Pesquisar" />
+		</form>
+    </div>
+
+   	<h3 id="resultado-pesquisar-cliente">Resultado Busca</h3>
+   	<div>
+   		<form id="form-editar-cliente" method="get" action="#">
+        <input id="fec_nome" name="nome" type="text" value="Joao" placeholder="Nome" />
+        <input id="fec_endereco" name="endereco" type="text" value="Rua Abc" placeholder="Endereço" />
+        <select id="fec_sexo" name="sexo">
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+        </select>
+        <input id="fec_telefone" name="telefone" type="text" value="3333 1111" placeholder="Telefone" />
+        <input id="fec_cpf" name="cpf" type="text" value="012.125.540-60" placeholder="CPF" />
+        <input id="fec_email" name="email" type="text" value="joao@gmail.com" placeholder="E-mail" />
+        <input id="fec_senha" name="senha" type="password" value="" placeholder="Senha" />
+        <input id="fec_senha2" name="senha2" type="password" value="" placeholder="Repita a senha" />
+        <input id="fec_enviar" name="enviar" type="submit" value="Alterar" />
+      </form>
+   	</div>
+  <!-- e#accordion -->
+
+</div>
+<!-- e#cadastro-cliente -->
+
+<!-- Para buggar, pois o conteudo ajax e carregado depois de ter executado o script -->
+<script src="js/main.js"></script>

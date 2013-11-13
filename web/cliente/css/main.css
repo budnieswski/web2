@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Default
+   ========================================================================== */
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #d5e7fe;
+}
+.ui-state-active a, .ui-state-hover a {
+    outline: none;
+}
+.ui-state-focus {
+    border: none;
+    outline: none;
+}
+.ui-state-active {
+    border: none;
+    outline: none;
+}
+.ui-tabs-nav li {
+  -webkit-transition: all 0.20s ease-in-out;
+     -moz-transition: all 0.20s ease-in-out;
+      -ms-transition: all 0.20s ease-in-out;
+       -o-transition: all 0.20s ease-in-out;
+}
+/* Internet Explorer 7: setting "separate" results in bad visuals; all other browsers work fine with either value. */
+/* If set to "separate", then this rule is also needed to prevent double vertical borders on hover:
+table.ui-styled-table tr * + th, table.ui-styled-table tr * + td  { border-left-width: 0px !important; } */
+table.ui-styled-table { border-collapse: collapse; }
+
+/* Undo the "bolding" that jQuery UI theme may cause on hovered elements
+/* Internet Explorer 7: does not support "inherit", so use a MS proprietary expression along with an Internet Explorer <= 7 targeting hack
+        to make the visuals consistent across all supported browsers */
+table.ui-styled-table td.ui-state-hover {
+    font-weight: inherit;
+    *font-weight: expression(this.parentNode.currentStyle['fontWeight']);
+}
+
+/* Initally remove bottom border for all cells. */
+table.ui-styled-table th, table.ui-styled-table td { border-bottom-width: 0px !important; }
+
+/* Hovered-row cells should show bottom border (will be highlighted) */
+table.ui-styled-table tbody tr:hover th,
+table.ui-styled-table tbody tr:hover td
+{ border-bottom-width: 1px !important; }
+
+/* Remove top border if the above row is being hovered to prevent double horizontal borders. */
+table.ui-styled-table tbody tr:hover + tr th,
+table.ui-styled-table tbody tr:hover + tr td
+{ border-top-width: 0px !important; }
+
+/* Last-row cells should always show bottom border (not necessarily highlighted if not hovered). */
+/* Internet Explorer 7, Internet Explorer 8: selector dependent on CSS classes because of no support for :last-child */
+table.ui-styled-table tbody tr.last-child th,
+table.ui-styled-table tbody tr.last-child td
+{ border-bottom-width: 1px !important; }
+
+/* Last-row cells should always show bottom border (not necessarily highlighted if not hovered). */
+/* Internet Explorer 8 BUG: if these (unsupported) selectors are added to a rule, other selectors for that rule will stop working as well! */
+/* Internet Explorer 9 and later, Firefox, Chrome: make sure the visuals are working even without the CSS classes crutch. */
+table.ui-styled-table tbody tr:last-child th,
+table.ui-styled-table tbody tr:last-child td
+{ border-bottom-width: 1px !important; }
+
+input::-moz-focus-inner { 
+  border: 0; 
+}
+object, embed { 
+  outline: 0;
+}
+a {
+   outline: 0;
+}
+form span.message {
+  font-size: 12px;
+}
+input, textarea, select {
+  display: block;
+  border: 1px solid #bac1c6;
+  height: 25px;
+  text-indent: 5px;
+  width: 270px;
+
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 10px 1px 10px 0px;
+}
+ 
+input:focus, textarea:focus, select:focus {
+  /*box-shadow: 0 0 5px rgba(81, 203, 238, 1);*/
+  box-shadow: 0 0 5px rgba(26, 141, 210, 1);
+  border: 1px solid rgba(26, 141, 210, 1);
+}
+
+input.error, textarea.error, select.error {
+  box-shadow: 0 0 5px rgba(210, 27, 26, 1);
+  border: 1px solid rgba(210, 27, 26, 1);
+}
+
+input.valid, textarea.valid, select.valid{
+  box-shadow: 0 0 5px rgba(11, 200, 93, 1);
+  border: 1px solid rgba(11, 200, 93, 1);
+}
+
+input.warning, textarea.warning{
+  box-shadow: 0 0 5px rgba(227, 225, 35, 1);
+  border: 1px solid rgba(227, 225, 35, 1);
+}
+
+.table-lista-lavagem td { text-align: center; }
+.table-lista-lavagem td a {display: block; }
+.table-lista-lavagem td a:hover {background: #1a8dd2; }
+.table-lista-lavagem td a span { margin:0 auto; }
+.table-lista-lavagem th.cancelar {
+  width: 130px;
+}
+.table-lista-lavagem th.codigo,
+.table-lista-lavagem th.status,
+.table-lista-lavagem th.visualizar,
+.table-lista-lavagem th.data,
+.table-lista-lavagem th.valor
+ { width: 100px; }
+
+/* ==========================================================================
+   Login Page
+   ========================================================================== */
+#landing-login {
+  margin: 13% auto 0 auto;
+  width: 360px;
+  box-shadow: 0 0 500px #1a8dd2;
+}
+#landing-login div {
+  margin: 0;
+  padding: 0;
+}
+#landing-login form {
+  margin: 0 auto;
+  width: 270px;
+}
+
+/* ==========================================================================
+   Painel Area
+   ========================================================================== */
+#wrap {
+  margin: 0 auto;
+  width: 960px;
+  min-height: 500px;
+  box-shadow: 0 0 500px #1a8dd2;
+  background-color: #fff;
+}
+
+/*
+* Side Left
+*/
+/*#wrap .side-left {
+  float: left;
+  width: 200px;
+  background-color: green;
+}
+#wrap .side-left .options-menu {}
+*/
+/*
+* Side Right
+*/
+/*#wrap .side-right {
+  float: left;
+  width: 760px;
+  background-color: red;
+}*/
+/*#wrap .side-right .content {}*/
+
+/* ==========================================================================
+   Lavagem
+   ========================================================================== */
+.lavagem-side-right {
+  width: 300px;
+  float: right;
+}
+#itens {
+  float: left;
+  width: 65%;
+  min-height: 12em;
+}
+.itens.custom-state-active { background: #edeef0; }
+.itens li {
+  float: left;
+  width: 90px;
+  height: auto;
+  padding: 0.4em;
+  margin: 0 0.4em 0.4em 0;
+  text-align: center;
+}
+.itens li h5 {
+  height: 28px;
+  /*margin: 0 0 0.4em;*/
+  margin: 0;
+  padding: 2px;
+  cursor: move;
+}
+.itens li a { float: right; }
+.itens li a.ui-icon-zoomin { float: left; }
+/*.itens li img { width: 100%; cursor: move; }*/
+/*.itens li figure {
+  display: block;
+  margin: 0 auto;
+  cursor: move;
+  width: 90px;
+  height: 90px;
+  overflow: hidden
+}*/
+.itens li img { display: block; margin: 0 auto; cursor: move;  }
+
+#cesto  {
+  float: right;
+  width: 300px;
+  min-height: 18em;
+  padding: 7px;
+}
+#cesto h4 {
+  line-height: 16px;
+  margin: 0 0 0.4em;
+}
+#cesto h4 .ui-icon { float: left; }
+#cesto .itens h5 { display: none; }
+.price,
+.quantidade {
+  float: left;
+}
+#cesto-acoes > li {
+  display: inline;
+}
+#cesto-acoes i {
+  margin: 0 auto;
+}
+#cesto-acoes {
+  text-align: center;
+  width: 300px;
+  padding: 7px;
+  float: right;
+  width: 300px;
+  list-style: none;
+}
+
+/* ==========================================================================
+   Visializar Lavagens
+   ========================================================================== */
+#visualizar-lavagens .styleTable {
+  margin: 0 auto;
+}
+
+ /* ==========================================================================
+   Cancelar Lavagem
+   ========================================================================== */
+#cancelar-lavagem .styleTable {
+  margin: 0 auto;
+}
