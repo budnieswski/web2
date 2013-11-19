@@ -2,10 +2,17 @@
    Triggers
    ========================================================================== */
 {
-
+  // Deslogar
+  $(".menu-options a[href*='deslogar']").click(function(event){
+    event.preventDefault();
+     window.location.href = "./deslogar.jsp";
+     return false;
+  });
+  
+  
   $("#btn-cadastro-categoria").click(function(event){
     event.preventDefault();
-     $("#dialog-cadastro-categoria").dialog("open");
+    $("#dialog-cadastro-categoria").dialog("open");
   });
 
 

@@ -7,6 +7,19 @@ jQuery(function($){
     $( "#landing-login" ).tabs({ show: { effect: "fade", duration: 500 } });
     $( document ).tooltip();
     $( "input[type=submit], button" ).button();
+    
+    // dialog default, para interacao
+    $("#dialog-alert").dialog({
+      autoOpen: false,
+      resizable: false,
+      width: 350,
+      modal: true,
+      buttons: {
+        Fechar: function() {
+          $(this).dialog("close");
+        }
+      }
+    });
   }
 
 
@@ -61,18 +74,23 @@ jQuery(function($){
         }
       },
       submitHandler: function() {
-        var form = $('#login-form');
+        var form = $('#login-form').serialize();
+        
         $.ajax({
-          url: 'test.php?type=login',
+          url: '../LoginAdmin',
           type: 'POST',
-          data: form.serialize(),
+          data: form,
           success: function (data) {
-            if (data == 'false') {
+              
+              if (data=='true')
+                  window.location.href = "../admin/home.html";
+              else if (data=='false') {
+                  
+                  $("#dialog-alert")
+                          .dialog("open")
+                          .html("Login ou Senha incorretos");
+              }
 
-              console.log('login/senha errados');
-            } else if (data == 'true') {
-              console.log('OKAY');
-            }
           }
         })
       },
