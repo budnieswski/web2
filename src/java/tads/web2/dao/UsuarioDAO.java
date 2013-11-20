@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import tads.web2.model.Usuario;
 
 public class UsuarioDAO {
@@ -47,5 +49,9 @@ public class UsuarioDAO {
         }
         
         return resultado;
+    }
+    
+    public void cadastroUsuario (String dados, int tipo) {
+        Object obj = JSONValue.parse(dados);
     }
 }
