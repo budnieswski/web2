@@ -33,7 +33,8 @@
 <!-- cnt -->
 <div id="dialog-alert" title="Mensagem"></div>
 
-<c:if test="${sessionScope.logado == 'true'}">
+<!-- Ja esta logado -->
+<c:if test="${not empty u}">
     <script> window.location.href = "./home.jsp" </script>
 </c:if>
 

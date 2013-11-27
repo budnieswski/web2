@@ -1,3 +1,4 @@
+<%@taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <!--[if lt IE 7]>       <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -33,8 +34,14 @@
 <!-- cnt -->
 <div id="wrap">
     
-    <c:if test="${sessionScope.logado != 'true'}">
+    <!-- Se nao exisitr usuario logado -->
+    <c:if test="${empty u}">
         <script> window.location.href = "./" </script>
+    </c:if>
+        
+    <!-- Nao e administrador -->
+    <c:if test="${u.usuario_tipo_id != 1}">
+        <script> window.location.href = "../" </script>
     </c:if>
   
   <!-- Dialogs -->

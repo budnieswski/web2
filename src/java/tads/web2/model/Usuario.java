@@ -1,6 +1,8 @@
 package tads.web2.model;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     
     private int id;
     private int usuario_tipo_id;
@@ -12,6 +14,8 @@ public class Usuario {
     private String email;
     private String senha;
     private String data_nasc;
+    
+    public Usuario() {}
 
     public int getId() {
         return id;

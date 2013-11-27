@@ -6,15 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import tads.web2.model.Usuario;
 
 public class UsuarioDAO {
     private Connection con;
+    private HttpSession session;
     
     public UsuarioDAO (Connection con) {
         this.con = con;
+    }
+    
+    public void setSession (HttpSession session) {
+        this.session = session;
     }
     
     public boolean login (String email, String senha, int tipo) throws SQLException {
@@ -28,6 +34,20 @@ public class UsuarioDAO {
         ResultSet rs = st.executeQuery();
         
         if (rs.next()) {
+            Usuario u = new Usuario();
+            u.setId( Integer.parseInt(rs.getString("id")) );
+            u.setUsuario_tipo_id( Integer.parseInt(rs.getString("usuario_tipo_id")) );
+            u.setNome(rs.getString("nome"));
+            u.setEndereco(rs.getString("endereco"));
+            u.setSexo(rs.getString("sexo"));
+            u.setTelefone(rs.getString("telefone"));
+            u.setCpf( Integer.parseInt(rs.getString("cpf")) );
+            u.setEmail(rs.getString("email"));
+            u.setSenha(rs.getString("senha"));
+            u.setData_nasc(rs.getString("data_nasc"));
+            
+            this.session.setAttribute("u", u);
+            
             return true;
         }
         

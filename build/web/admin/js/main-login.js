@@ -83,12 +83,13 @@ jQuery(function($){
           success: function (data) {
               
               if (data=='true')
-                  window.location.href = "../admin/home.html";
+                  window.location.href = "../admin/home.jsp";
               else if (data=='false') {
                   
                   $("#dialog-alert")
                           .dialog("open")
                           .html("Login ou Senha incorretos");
+                  console.log("depois");
               }
 
           }

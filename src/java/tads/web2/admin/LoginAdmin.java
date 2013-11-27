@@ -42,12 +42,13 @@ public class LoginAdmin extends HttpServlet {
             
             senha = MD5.gerate(senha);
             
+            dao.setSession(request.getSession());
             boolean login = dao.login(email, senha, 1);
             
             if (login) {
                 out.print("true");
-                HttpSession session = request.getSession();
-                session.setAttribute("logado", "true");
+                //HttpSession session = request.getSession();
+                //session.setAttribute("logado", "true");
             } else {
                 out.print("false");
             }

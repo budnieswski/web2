@@ -11,7 +11,7 @@ public class ConnectionFactory {
             String connectionURL = "jdbc:mysql://localhost/web2";
             Connection connection = null; 
             Class.forName("com.mysql.jdbc.Driver"); 
-            connection = DriverManager.getConnection(connectionURL, "root", "gui123lherme");
+            connection = DriverManager.getConnection(connectionURL, "root", "root");
             return connection;
     }
 }

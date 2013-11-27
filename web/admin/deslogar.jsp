@@ -7,8 +7,8 @@
         <title>Deslogar - Admin</title>
     </head>
     <body>
-        <c:if test="${sessionScope.logado == 'true'}">
-            <c:remove var="logado" scope="session" />
+        <c:if test="${not empty u}">
+            <c:remove var="u" scope="session" />
         </c:if>
         <script> window.location.href = "./" </script>
     </body>
