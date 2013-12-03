@@ -30,41 +30,41 @@
   {
     // Cadastro
     $("#form-cadastro-cliente").validate({
-      rules: {
-        nome: {
-          required: true,
-          minlength: 3
-        },
-        endereco: {
-          required: true,
-          minlength: 2
-        },
-        sexo: {
-          required: true
-        },
-        telefone: {
-          required: true,
-          minlength: 6
-        },
-        cpf: {
-          required: true,
-          minlength: 11,
-          // remote: 'test.php?type=cpf'
-        },
-        email: {
-          required: true,
-          email: true,
-          // remote: 'test.php?type=email'
-        },
-        senha: {
-          required: true,
-          minlength: 6,
-        },
-        senha2: {
-          required: true,
-          equalTo: '#fcc_senha'
-        }
-      },
+//      rules: {
+//        nome: {
+//          required: true,
+//          minlength: 3
+//        },
+//        endereco: {
+//          required: true,
+//          minlength: 2
+//        },
+//        sexo: {
+//          required: true
+//        },
+//        telefone: {
+//          required: true,
+//          minlength: 6
+//        },
+//        cpf: {
+//          required: true,
+//          minlength: 11,
+//          // remote: 'test.php?type=cpf'
+//        },
+//        email: {
+//          required: true,
+//          email: true,
+//          // remote: 'test.php?type=email'
+//        },
+//        senha: {
+//          required: true,
+//          minlength: 6,
+//        },
+//        senha2: {
+//          required: true,
+//          equalTo: '#fcc_senha'
+//        }
+//      },
       messages: {
         nome: {
           required: 'Insira um Nome',
@@ -100,8 +100,8 @@
           equalTo: 'As senhas nao sao iguais<br>'
         }
       },
-      submitHandler: function() {
-        alert("submitted!");
+      submitHandler: function(form) {
+        cadastroCliente(form);
       },
       success: function(label) {
         label.remove();
