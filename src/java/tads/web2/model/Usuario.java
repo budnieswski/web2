@@ -10,7 +10,7 @@ public class Usuario implements Serializable {
     private String endereco;
     private String sexo;
     private String telefone;
-    private int cpf;
+    private String cpf;
     private String email;
     private String senha;
     private String data_nasc;
@@ -65,11 +65,11 @@ public class Usuario implements Serializable {
         this.telefone = telefone;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

@@ -1,21 +1,27 @@
-package tads.web2.admin;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tads.web2.cliente;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import tads.web2.MD5;
 import tads.web2.dao.ConnectionFactory;
 import tads.web2.dao.UsuarioDAO;
 
-@WebServlet(name = "LoginAdmin", urlPatterns = {"/LoginAdmin"})
-public class LoginAdmin extends HttpServlet {
+/**
+ *
+ * @author guilherme
+ */
+@WebServlet(name = "LoginCliente", urlPatterns = {"/LoginCliente"})
+public class LoginCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -30,10 +36,11 @@ public class LoginAdmin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        response.setContentType("text/html");
-            
+        
         try {
+            
             Connection con = ConnectionFactory.getConnection();
             UsuarioDAO dao = new UsuarioDAO(con);
             
@@ -43,7 +50,7 @@ public class LoginAdmin extends HttpServlet {
             senha = MD5.gerate(senha);
             
             dao.setSession(request.getSession());
-            boolean login = dao.login(email, senha, 1);
+            boolean login = dao.login(email, senha, 2);
             
             if (login) {
                 out.print("true");
@@ -51,7 +58,8 @@ public class LoginAdmin extends HttpServlet {
                 out.print("false");
             }
             
-        } catch(Exception e){
+        }
+        catch(Exception e){
             out.println(e);
         } finally {            
             out.close();

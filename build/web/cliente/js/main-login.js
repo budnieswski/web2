@@ -7,6 +7,19 @@ jQuery(function($){
     $( "#landing-login" ).tabs({ show: { effect: "fade", duration: 500 } });
     $( document ).tooltip();
     $( "input[type=submit], button" ).button();
+    
+    // dialog default, para interacao
+    $("#dialog-alert").dialog({
+      autoOpen: false,
+      resizable: false,
+      width: 350,
+      modal: true,
+      buttons: {
+        Fechar: function() {
+          $(this).dialog("close");
+        }
+      }
+    });
   }
 
 
@@ -61,18 +74,24 @@ jQuery(function($){
         }
       },
       submitHandler: function() {
-        var form = $('#login-form');
+        var form = $('#login-form').serialize();
+        
         $.ajax({
-          url: 'test.php?type=login',
+          url: '../LoginCliente',
           type: 'POST',
-          data: form.serialize(),
+          data: form,
           success: function (data) {
-            if (data == 'false') {
+              console.log(data);
+              if (data=='true')
+                  window.location.href = "../cliente/home.jsp";
+              else if (data=='false') {
+                  
+                  $("#dialog-alert")
+                          .dialog("open")
+                          .html("Login ou Senha incorretos");
+                  console.log("depois");
+              }
 
-              console.log('login/senha errados');
-            } else if (data == 'true') {
-              console.log('OKAY');
-            }
           }
         })
       },
@@ -108,12 +127,12 @@ jQuery(function($){
         cpf: {
           required: true,
           minlength: 11,
-          remote: 'test.php?type=cpf'
+//          remote: 'test.php?type=cpf'
         },
         email: {
           required: true,
           email: true,
-          remote: 'test.php?type=email'
+//          remote: 'test.php?type=email'
         },
         senha: {
           required: true,
@@ -143,12 +162,12 @@ jQuery(function($){
         cpf: {
           required: 'Insira um CPF',
           minlength: jQuery.format("CPF deve conter {0} numeros"),
-          remote: "CPF ja esta cadastrado"
+//          remote: "CPF ja esta cadastrado"
         },
         email: {
           required: 'Insira um E-mail',
           email: 'Email invalido',
-          remote: "E-mail ja esta cadastrado"
+//          remote: "E-mail ja esta cadastrado"
         },
         senha: {
           required: 'Digite uma Senha',

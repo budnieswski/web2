@@ -41,7 +41,7 @@ public class UsuarioDAO {
             u.setEndereco(rs.getString("endereco"));
             u.setSexo(rs.getString("sexo"));
             u.setTelefone(rs.getString("telefone"));
-            u.setCpf( Integer.parseInt(rs.getString("cpf")) );
+            u.setCpf( rs.getString("cpf") );
             u.setEmail(rs.getString("email"));
             u.setSenha(rs.getString("senha"));
             u.setData_nasc(rs.getString("data_nasc"));

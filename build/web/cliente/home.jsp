@@ -1,6 +1,6 @@
 <%@taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <!--[if lt IE 7]>       <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>          <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>          <html class="no-js lt-ie9"> <![endif]-->
@@ -12,11 +12,12 @@
   <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico"/>
   <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="favicon.ico"/>
 
-  <title>Lavanderia OnLine - LOL</title>
+  <title>Painel - LOL</title>
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/boilerplate.css">
   <link href="css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+  <link href="css/jquery.appendGrid-1.1.2.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -31,30 +32,40 @@
 <![endif]-->
 
 <!-- cnt -->
-<div id="dialog-alert" title="Mensagem"></div>
-
-<!-- Ja esta logado -->
-<c:if test="${not empty u}">
-    <script> window.location.href = "./home.jsp" </script>
-</c:if>
-
-<div id="landing-login">
+<div id="wrap">
+    
+    <!-- Se nao exisitr usuario logado -->
+    <c:if test="${empty u}">
+        <script> window.location.href = "./" </script>
+    </c:if>
+        
+    <!-- Nao e cliente -->
+    <c:if test="${u.usuario_tipo_id != 2}">
+        <script> window.location.href = "../" </script>
+    </c:if>
   
-    <form id="login-form" method="POST" action="#">
-      <input id="lemail" name="email" type="text" placeholder="Email" />
-      <input id="lsenha" name="senha" type="password" placeholder="Senha" />
-      <input id="lenviar" name="enviar" type="submit" value="Logar" />
-    </form>
+  <!-- Dialogs -->
+
+  <div id="dialog-alert" title="Mensagem"></div>
+
+  <!-- e#Dialogs -->
+  
+  <ul class="menu-options">
+    <li><a href="ajax/nova-lavagem.html">Nova Lavagem</a></li>
+    <li><a href="ajax/visualizar-lavagens.html">Visualizar Lavagens</a></li>
+    <li><a href="ajax/cancelar-lavagem.html">Cancelar Lavagem</a></li>
+    <li><a href="ajax/configuracao.jsp">Configuração</a></li>
+    <li><a href="#deslogar">Deslogar</a></li>
+  </ul>
 
 </div>
-<!-- e#landing-login -->
+<!-- e#wrap -->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 <script src="js/jquery-ui-1.10.3.custom.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<script src="js/jquery.meio.mask.min.js"></script>
+<script src="js/jquery.formatCurrency-1.4.0.js"></script>
 <script src="js/plugins.js"></script>
-<script src="js/main-login.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

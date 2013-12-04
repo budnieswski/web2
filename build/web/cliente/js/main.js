@@ -15,6 +15,14 @@ jQuery(function($){
         }
       });
     $( ".styleTable" ).styleTable();
+    
+    
+    // Deslogar
+    $(".menu-options a[href*='deslogar']").click(function(event){
+      event.preventDefault();
+       window.location.href = "./deslogar.jsp";
+       return false;
+    });
 
     /*
     * Dialogs

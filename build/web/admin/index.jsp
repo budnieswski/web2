@@ -40,7 +40,7 @@
 
 <div id="landing-login">
   
-    <form id="login-form" autocomplete="off" method="POST" action="#">
+    <form id="login-form" method="POST" action="#">
       <input id="lemail" name="email" type="text" placeholder="Email" />
       <input id="lsenha" name="senha" type="password" placeholder="Senha" />
       <input id="lenviar" name="enviar" type="submit" value="Logar" />

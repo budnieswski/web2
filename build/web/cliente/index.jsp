@@ -1,6 +1,6 @@
 <%@taglib prefix="c"uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <!--[if lt IE 7]>       <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>          <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>          <html class="no-js lt-ie9"> <![endif]-->
@@ -37,14 +37,38 @@
 <c:if test="${not empty u}">
     <script> window.location.href = "./home.jsp" </script>
 </c:if>
-
+    
 <div id="landing-login">
   
+  <ul>
+    <li><a href="#tabs-1">Login</a></li>
+    <li><a href="#tabs-2">Cadastro</a></li>
+  </ul>
+  <div id="tabs-1">
     <form id="login-form" method="POST" action="#">
       <input id="lemail" name="email" type="text" placeholder="Email" />
       <input id="lsenha" name="senha" type="password" placeholder="Senha" />
       <input id="lenviar" name="enviar" type="submit" value="Logar" />
     </form>
+  </div>
+
+  <div id="tabs-2">
+    <form id="cadastro-form" method="get" action="#">
+      <input id="cnome" name="nome" type="text" value="" placeholder="Nome" />
+      <input id="cendereco" name="endereco" type="text" value="" placeholder="Endereço" />
+      <select id="csexo" name="sexo">
+        <option value="">Sexo</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+      </select>
+      <input id="ctelefone" name="telefone" type="text" value="" placeholder="Telefone" />
+      <input id="ccpf" name="cpf" type="text" value="" placeholder="CPF" />
+      <input id="cemail" name="email" type="text" value="" placeholder="E-mail" />
+      <input id="csenha" name="senha" type="password" value="" placeholder="Senha" />
+      <input id="csenha2" name="senha2" type="password" value="" placeholder="Repita a senha" />
+      <input id="cenviar" name="enviar" type="submit" value="Cadastrar" />
+    </form>
+  </div>
 
 </div>
 <!-- e#landing-login -->

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 20-Nov-2013 às 12:15
+-- Data de Criação: 04-Dez-2013 às 09:25
 -- Versão do servidor: 5.5.34-0ubuntu0.12.10.1
 -- versão do PHP: 5.4.6-1ubuntu1.4
 
@@ -104,20 +104,21 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `endereco` varchar(120) DEFAULT NULL,
   `sexo` varchar(9) DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
-  `cpf` int(11) DEFAULT NULL,
+  `cpf` varchar(14) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `senha` varchar(50) DEFAULT NULL,
   `data_nasc` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario_FKIndex1` (`usuario_tipo_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `usuario_tipo_id`, `nome`, `endereco`, `sexo`, `telefone`, `cpf`, `email`, `senha`, `data_nasc`) VALUES
-(2, 1, 'Guilherme Budnieswski', 'Rua Abc, 123', 'Masculino', '(41) 9806-9374', 2147483647, 'guiiski@gmail.com', '005924d6ed93e84fd8c66ee4860056ad', '1993-09-11');
+(2, 1, 'Guilherme Budnieswski', 'Rua Abc, 123', 'Masculino', '(41) 9806-9374', '2147483647', 'guiiski@gmail.com', '005924d6ed93e84fd8c66ee4860056ad', '1993-09-11'),
+(4, 2, 'Cliente Teste', 'Rua Abcd', 'Masculino', '(41) 3333-1999', '214.748.364-07', 'a@a.com', 'e10adc3949ba59abbe56e057f20f883e', NULL);
 
 -- --------------------------------------------------------
 
