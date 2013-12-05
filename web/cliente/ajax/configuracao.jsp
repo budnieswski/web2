@@ -6,9 +6,16 @@
       <form id="configuracoes-form" method="get" action="#">
         <input id="cnome" name="nome" type="text" value="${u.nome}" placeholder="Nome" />
         <input id="cendereco" name="endereco" type="text" value="${u.endereco}" placeholder="Endereço" />
+
         <select id="csexo" name="sexo">
-          <option value="Masculino">Masculino</option>
-          <option value="Feminino">Feminino</option>
+            
+            <option value="${u.sexo}">${u.sexo}</option>
+            
+            <optgroup label="Sexos">
+                <option value="Feminino">Feminino</option>
+                <option value="Masculino">Masculino</option>
+            </optgroup>
+          
         </select>
         <input id="ctelefone" name="telefone" type="text" value="${u.telefone}" placeholder="Telefone" />
         <input id="ccpf" name="ncpf" type="text" value="${u.cpf}" placeholder="CPF" disabled="disabled" />
