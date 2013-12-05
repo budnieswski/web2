@@ -1,9 +1,8 @@
-package tads.web2;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package tads.web2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +19,8 @@ import tads.web2.dao.UsuarioDAO;
  *
  * @author guilherme
  */
-@WebServlet(urlPatterns = {"/test"})
-public class test extends HttpServlet {
+@WebServlet(name = "PesquisaCliente", urlPatterns = {"/PesquisaCliente"})
+public class PesquisaCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -41,32 +40,8 @@ public class test extends HttpServlet {
             
             Connection con = ConnectionFactory.getConnection();
             UsuarioDAO dao = new UsuarioDAO(con);
+            dao.setSession(request.getSession());
             
-            String tipo = request.getParameter("type");
-            
-            if (tipo.equals("email")) {
-                boolean rs = dao.consultaValidaCadastro("email", request.getParameter("email"));
-                
-                if (rs) {
-                    out.print("false"); // Existe
-                } else {
-                    out.print("true"); // Nao existe
-                }
-            } else if (tipo.equals("cpf")) {
-                boolean rs = dao.consultaValidaCadastro("cpf", request.getParameter("cpf"));
-                
-                if (rs) {
-                    out.print("false"); // Existe
-                } else {
-                    out.print("true"); // Nao existe
-                }
-            } else if (tipo.equals("pesquisa_cliente")) {
-                String rs = dao.pesquisaCliente(request.getParameter("pesquisa_cliente"));
-                out.print(rs); // Retorna um JSON
-            }
-            
-            
-        
         } catch (Exception e) {
             out.print("Error: " + e);
         } finally {            

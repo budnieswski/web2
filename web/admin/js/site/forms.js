@@ -123,7 +123,7 @@
         },
       },
       submitHandler: function(form) {
-        console.log("try");
+        pesquisaCliente(form);
       },
       success: function(label) {
         label.remove();

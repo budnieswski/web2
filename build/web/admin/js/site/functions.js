@@ -34,6 +34,27 @@
         })
 
   }
+  
+  function pesquisaCliente (form) {
+      var form2 = $(form),
+          nome = form2.children('input#fpc_nome').val();        
+        $.get(
+        '../test?type=pesquisa_cliente',
+        {pesquisa_cliente:nome},
+        function(data){
+            var ms = "";
+            $.each(data, function(key, value){
+                ms += "<tr id=\""+value.id+"\">";
+                ms += "<td class=\"ui-widget-content\">"+value.nome+"</td>";
+                ms += "<td class=\"ui-widget-content\"><a href=\"#endereco\"><span class=\"ui-icon ui-icon-home\"></a></td>";
+                ms += "</tr>"
+            });
+            
+            $("#table-resultado-pesquisar-cliente").append(ms).show();
+        },
+        'json'
+    );
+  }
 
 
   // funcao que atualiza o status do pedido

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import tads.web2.model.Usuario;
@@ -140,5 +141,37 @@ public class UsuarioDAO {
         }
         
         return false;
+    }
+    
+    
+    /*
+     * Procura por um usuario e retorna uma String (JSON) do seu cadastro
+     * caso nao exista retorna vazio
+     */
+    public String pesquisaCliente (String nome) throws SQLException {
+        PreparedStatement st = con.prepareStatement("SELECT * FROM usuario WHERE nome LIKE '%"+nome+"%'");
+        ResultSet rs = st.executeQuery();
+        
+        JSONArray jsonArray = new JSONArray();
+        
+        while (rs.next()) {
+            JSONObject jsonObject = new JSONObject();
+            
+            jsonObject.put("id", Integer.parseInt(rs.getString("id")) );
+            jsonObject.put("usuario_tipo_id", Integer.parseInt(rs.getString("usuario_tipo_id")) );
+            jsonObject.put("nome", rs.getString("nome") );
+            jsonObject.put("endereco", rs.getString("endereco") );
+            jsonObject.put("sexo", rs.getString("sexo") );
+            jsonObject.put("telefone", rs.getString("telefone") );
+            jsonObject.put("cpf", rs.getString("cpf") );
+            jsonObject.put("email", rs.getString("email") );
+            jsonObject.put("data_nasc", rs.getString("data_nasc") );
+            
+            jsonArray.add(jsonObject);
+        }
+        
+        
+        return jsonArray.toString();
+       
     }
 }
