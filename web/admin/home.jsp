@@ -39,8 +39,8 @@
         <script> window.location.href = "./" </script>
     </c:if>
         
-    <!-- Nao e administrador -->
-    <c:if test="${u.usuario_tipo_id != 1}">
+    <!-- Nao e administrador/funcionario -->
+    <c:if test="${u.usuario_tipo_id != 1 && u.usuario_tipo_id != 3}">
         <script> window.location.href = "../" </script>
     </c:if>
   
