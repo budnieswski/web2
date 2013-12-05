@@ -3,7 +3,7 @@
   <div class="accordion ui-helper-reset ui-helper-clearfix">
     <h3>Configurações de Cadastro</h3>
     <div>
-      <form id="cadastro-form" method="get" action="#">
+      <form id="configuracoes-form" method="get" action="#">
         <input id="cnome" name="nome" type="text" value="${u.nome}" placeholder="Nome" />
         <input id="cendereco" name="endereco" type="text" value="${u.endereco}" placeholder="Endereço" />
         <select id="csexo" name="sexo">
@@ -11,8 +11,8 @@
           <option value="Feminino">Feminino</option>
         </select>
         <input id="ctelefone" name="telefone" type="text" value="${u.telefone}" placeholder="Telefone" />
-        <input id="ccpf" name="cpf" type="text" value="${u.cpf}" placeholder="CPF" />
-        <input id="cemail" name="email" type="text" value="${u.email}" placeholder="E-mail" />
+        <input id="ccpf" name="ncpf" type="text" value="${u.cpf}" placeholder="CPF" disabled="disabled" />
+        <input id="cemail" name="nemail" type="text" value="${u.email}" placeholder="E-mail" disabled="disabled" />
         <input id="csenha" name="senha" type="password" value="" placeholder="Senha" />
         <input id="csenha2" name="senha2" type="password" value="" placeholder="Repita a senha" />
         <input id="cenviar" name="enviar" type="submit" value="Gravar" />

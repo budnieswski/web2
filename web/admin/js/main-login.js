@@ -90,6 +90,8 @@ jQuery(function($){
                           .dialog("open")
                           .html("Login ou Senha incorretos");
                   console.log("depois");
+              }  else {
+                  console.log(data);
               }
 
           }

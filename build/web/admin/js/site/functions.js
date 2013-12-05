@@ -9,28 +9,26 @@
   
   
   function cadastroCliente (form) {
-//    console.log($(form).serialize());
-//    console.log(JSON.stringify($(form).serializeArray()));
-    var form2 = JSON.stringify($(form).serializeArray());
     var form3 = $(form).serializeArray();
-    
-//    var fields=new Array();
-//           var values = new Array();
-//
-//           fields = $(form).serializeArray();
-//           $.each(fields, function(index,element){
-//             values.push(element.value);
-//           });
-//           
-//           console.log(values);
         
         $.ajax({
           url: '../CadastroCliente',
           type: 'POST',
-          data: form2,
+          data: form3,
           success: function (data) {
               
-              console.log(data);
+              if (data=='true') {
+                $("#dialog-alert")
+                          .dialog("open")
+                          .html("Cadastro Efetuado com sucesso !");
+              } else if (data=='false') {
+                  
+                  $("#dialog-alert")
+                          .dialog("open")
+                          .html("Erro ao cadastrar");
+              } else {
+                  console.log(data);
+              }
 
           }
         })

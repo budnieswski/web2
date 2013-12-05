@@ -435,5 +435,118 @@ jQuery(function($){
     }
     
   } // end <Visualizar Lavagem>;
+  
+  
+  
+  /*
+  * Formulario Configuracoes
+  */
+  {
+
+    $("#configuracoes-form").validate({
+        debug:true,
+      rules: {
+        nome: {
+          required: true,
+          minlength: 2
+        },
+        endereco: {
+          required: true,
+          minlength: 3
+        },
+        sexo: {
+          required: true
+        },
+        telefone: {
+          required: true,
+          minlength: 6
+        },
+//        cpf: {
+//          required: true,
+//          minlength: 11,
+//            remote: "../test?type=cpf"
+//        },
+//        email: {
+//          required: true,
+//          email: true,
+//          remote: "../test?type=email"
+//  
+//        },
+        senha: {
+//          required: true,
+          minlength: 6,
+        },
+        senha2: {
+//          required: true,
+          equalTo: '#csenha'
+        }
+      },
+      messages: { 
+       nome: {
+          required: 'Insira um Nome',
+          minlength: jQuery.format("Nome com no minimo {0} caracteres")
+        },
+        endereco: {
+          required: 'Insira um Endereco',
+          minlength: jQuery.format("Endereco com no minimo {0} caracteres")
+        },
+        sexo: {
+          required: 'Selecione um Sexo'
+        },
+        telefone: {
+          required: 'Insira um Telefone',
+          minlength: jQuery.format("Telefone com no minimo {0} caracteres")
+        },
+//        cpf: {
+//          required: 'Insira um CPF',
+//          minlength: jQuery.format("CPF deve conter {0} numeros"),
+//          remote: "CPF ja esta cadastrado"
+//        },
+//        email: {
+//          required: 'Insira um E-mail',
+//          email: 'Email invalido',
+//          remote: "E-mail ja esta cadastrado"
+//        },
+        senha: {
+//          required: 'Digite uma Senha',
+          minlength: jQuery.format("Senha com no minimo {0} caracteres")
+        },
+        senha2: {
+//          required: 'Repita a senha<br>',
+          equalTo: 'As senhas nao sao iguais<br>'
+        }
+      },
+      submitHandler: function(form) {
+        var form3 = $(form).serializeArray();
+        
+        $.ajax({
+          url: '../AtualizaCliente',
+          type: 'POST',
+          data: form3,
+          success: function (data) {
+              
+              if (data=='true') {
+                $("#dialog-alert")
+                          .dialog("open")
+                          .html("Atualizacao Efetuado com sucesso !");
+                
+              } else if (data=='false') {
+                  
+                  $("#dialog-alert")
+                          .dialog("open")
+                          .html("Erro ao atualizar");
+              } else {
+                  console.log(data);
+              }
+
+          }
+        })
+      },
+      success: function(label) {
+        label.remove();
+      }
+    });
+
+  }
 
 })

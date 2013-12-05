@@ -108,14 +108,15 @@ jQuery(function($){
   {
 
     $("#cadastro-form").validate({
+        debug:true,
       rules: {
         nome: {
           required: true,
-          minlength: 6
+          minlength: 2
         },
         endereco: {
           required: true,
-          minlength: 6
+          minlength: 3
         },
         sexo: {
           required: true
@@ -127,12 +128,13 @@ jQuery(function($){
         cpf: {
           required: true,
           minlength: 11,
-//          remote: 'test.php?type=cpf'
+            remote: "../test?type=cpf"
         },
         email: {
           required: true,
           email: true,
-//          remote: 'test.php?type=email'
+          remote: "../test?type=email"
+  
         },
         senha: {
           required: true,
@@ -143,8 +145,8 @@ jQuery(function($){
           equalTo: '#csenha'
         }
       },
-      messages: {
-        nome: {
+      messages: { 
+       nome: {
           required: 'Insira um Nome',
           minlength: jQuery.format("Nome com no minimo {0} caracteres")
         },
@@ -162,12 +164,12 @@ jQuery(function($){
         cpf: {
           required: 'Insira um CPF',
           minlength: jQuery.format("CPF deve conter {0} numeros"),
-//          remote: "CPF ja esta cadastrado"
+          remote: "CPF ja esta cadastrado"
         },
         email: {
           required: 'Insira um E-mail',
           email: 'Email invalido',
-//          remote: "E-mail ja esta cadastrado"
+          remote: "E-mail ja esta cadastrado"
         },
         senha: {
           required: 'Digite uma Senha',
@@ -178,8 +180,34 @@ jQuery(function($){
           equalTo: 'As senhas nao sao iguais'
         }
       },
-      submitHandler: function() {
-        alert("submitted!");
+      submitHandler: function(form) {
+        var form3 = $(form).serializeArray();
+        
+        $.ajax({
+          url: '../CadastroCliente',
+          type: 'POST',
+          data: form3,
+          success: function (data) {
+              
+              if (data=='true') {
+                $("#dialog-alert")
+                          .dialog("open")
+                          .html("Cadastro Efetuado com sucesso !");
+                  setTimeout(function(){
+                      window.location.href = "../cliente/index.jsp";
+                  }, 2500);
+                
+              } else if (data=='false') {
+                  
+                  $("#dialog-alert")
+                          .dialog("open")
+                          .html("Erro ao cadastrar");
+              } else {
+                  console.log(data);
+              }
+
+          }
+        })
       },
       success: function(label) {
         label.remove();

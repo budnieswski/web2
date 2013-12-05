@@ -65,6 +65,8 @@
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 <script src="js/jquery-ui-1.10.3.custom.js"></script>
 <script src="js/jquery.formatCurrency-1.4.0.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.meio.mask.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 </body>

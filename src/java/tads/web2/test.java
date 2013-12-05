@@ -1,13 +1,13 @@
+package tads.web2;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tads.web2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,12 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import tads.web2.dao.ConnectionFactory;
 import tads.web2.dao.UsuarioDAO;
+
 /**
  *
  * @author guilherme
  */
-@WebServlet(name = "CadastroCliente", urlPatterns = {"/CadastroCliente"})
-public class CadastroCliente extends HttpServlet {
+@WebServlet(urlPatterns = {"/test"})
+public class test extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -34,7 +35,6 @@ public class CadastroCliente extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
         try {
@@ -42,39 +42,28 @@ public class CadastroCliente extends HttpServlet {
             Connection con = ConnectionFactory.getConnection();
             UsuarioDAO dao = new UsuarioDAO(con);
             
-            String[] possivel = new String[]{
-                "nome", "endereco", "sexo", "telefone", "cpf", "email", "senha", "data_nasc"
-            };            
+            String tipo = request.getParameter("type");
             
-            Map reqMap = request.getParameterMap();
-            
-            String SQLValues = "",
-                   SQLFields = "";
-            
-            for(String parameter: possivel){
-                if (reqMap.containsKey(parameter) && !request.getParameter(parameter).isEmpty()) {
-                    if (parameter != "senha") {
-                        SQLFields += parameter + ",";
-                        SQLValues += "'" + request.getParameter(parameter) + "',";
-                    } else {
-                        // E senha, entao tem que ser MD5
-                        SQLFields += parameter + ",";
-                        SQLValues += "'" + MD5.gerate(request.getParameter(parameter)) + "',";
-                    }
+            if (tipo.equals("email")) {
+                boolean rs = dao.consultaValidaCadastro("email", request.getParameter("email"));
+                
+                if (rs) {
+                    out.print("false"); // Existe
+                } else {
+                    out.print("true"); // Nao existe
+                }
+            } else if (tipo.equals("cpf")) {
+                boolean rs = dao.consultaValidaCadastro("cpf", request.getParameter("cpf"));
+                
+                if (rs) {
+                    out.print("false"); // Existe
+                } else {
+                    out.print("true"); // Nao existe
                 }
             }
-            SQLFields = SQLFields.substring(0, SQLFields.length()-1);
-            SQLValues = SQLValues.substring(0, SQLValues.length()-1);
             
-            boolean cadastro = dao.cadastroUsuario(SQLFields, SQLValues, 2); // 2 = Cliente
             
-            if (cadastro) {
-                out.print("true");
-            } else {
-                out.print("false");
-            }
-            
-
+        
         } catch (Exception e) {
             out.print("Error: " + e);
         } finally {            

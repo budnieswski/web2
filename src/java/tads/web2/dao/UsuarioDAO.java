@@ -34,20 +34,7 @@ public class UsuarioDAO {
         ResultSet rs = st.executeQuery();
         
         if (rs.next()) {
-            Usuario u = new Usuario();
-            u.setId( Integer.parseInt(rs.getString("id")) );
-            u.setUsuario_tipo_id( Integer.parseInt(rs.getString("usuario_tipo_id")) );
-            u.setNome(rs.getString("nome"));
-            u.setEndereco(rs.getString("endereco"));
-            u.setSexo(rs.getString("sexo"));
-            u.setTelefone(rs.getString("telefone"));
-            u.setCpf( rs.getString("cpf") );
-            u.setEmail(rs.getString("email"));
-            u.setSenha(rs.getString("senha"));
-            u.setData_nasc(rs.getString("data_nasc"));
-            
-            this.session.setAttribute("u", u);
-            
+            atualizaBeanSession(Integer.parseInt(rs.getString("id")));            
             return true;
         }
         
@@ -71,7 +58,87 @@ public class UsuarioDAO {
         return resultado;
     }
     
-    public void cadastroUsuario (String dados, int tipo) {
-        Object obj = JSONValue.parse(dados);
+    
+    /*
+     * --
+     */
+    public boolean cadastroUsuario (String SQLFields, String SQLValues, int tipo) throws SQLException {
+        String query = "INSERT INTO usuario (usuario_tipo_id,"+SQLFields+") ";
+              query += "VALUES ('"+tipo+"',"+SQLValues+")";
+              
+        PreparedStatement st = con.prepareStatement(query);
+        int rs = st.executeUpdate();
+        
+        if (rs==1) {
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    
+    /*
+     * Metodo que faz a atulizacao dos dados do usuario no banco de dados
+     */
+    public boolean atualizaUsuario (String SQLValues) throws SQLException {
+        Usuario u = (Usuario) session.getAttribute("u");
+        String query = "UPDATE usuario SET "+SQLValues+" WHERE id="+u.getId();
+              
+        PreparedStatement st = con.prepareStatement(query);
+        int rs = st.executeUpdate();
+        
+        if (rs==1) {
+            
+            atualizaBeanSession(u.getId());
+            return true;
+        }
+        
+        return false;
+    }
+    
+    
+    /*
+     * Metodo que cria/atualiza a bean do usuario na sessao
+     * usada quando efetuada um login/atualizacao de configuracao
+     */
+    private void atualizaBeanSession (int usuarioId) throws SQLException {
+        String query = "SELECT * FROM usuario WHERE id="+usuarioId;
+        
+        PreparedStatement st = con.prepareStatement(query);
+        ResultSet rs = st.executeQuery();
+        
+        if (rs.next()) {
+            Usuario u = new Usuario();
+            u.setId( Integer.parseInt(rs.getString("id")) );
+            u.setUsuario_tipo_id( Integer.parseInt(rs.getString("usuario_tipo_id")) );
+            u.setNome(rs.getString("nome"));
+            u.setEndereco(rs.getString("endereco"));
+            u.setSexo(rs.getString("sexo"));
+            u.setTelefone(rs.getString("telefone"));
+            u.setCpf( rs.getString("cpf") );
+            u.setEmail(rs.getString("email"));
+            u.setSenha(rs.getString("senha"));
+            u.setData_nasc(rs.getString("data_nasc"));
+            
+            this.session.setAttribute("u", u);            
+        }
+    }
+    
+    
+    /*
+     * Metodo que faz uma consulta de determinado campo
+     * usado no cadastro de usuarios para nao duplicar email/cpf
+     */
+    public boolean consultaValidaCadastro (String campo, String valor) throws SQLException {
+        
+        PreparedStatement st = con.prepareStatement("SELECT "+campo+" FROM usuario WHERE "+campo+"='"+valor+"'");
+        ResultSet rs = st.executeQuery();
+        
+        if (rs.next()) {
+            return true;
+        }
+        
+        return false;
     }
 }
