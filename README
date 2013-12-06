@@ -1,0 +1,1 @@
+Não esqueçam de alterar a senha do banco de dados no arquivo ConnectionFactory (pacote tads.web2.dao)
